@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
+import com.ibm.watson.developer_cloud.conversation.v1.model.Intent;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -87,17 +89,15 @@ public class MessageList extends AppCompatActivity {
                         .context(yo)
                         .build();
 
-            String workspaceId = "7adcc6e4-16f0-4a74-ba22-ae9152803f2a";
+            String workspaceId = "19bde015-bd33-4552-bc32-f9be5257d4d6";
             MessageResponse response = service.message(workspaceId, newMessage).execute();
             data = response.toString();
-            Log.d("Messageid",data);
+            Log.e("joke",data);
             String result = "";
-            try {
-                JSONObject contObj = new JSONObject(data);
-                result = (contObj.getJSONObject("output").getJSONArray("text").get(0).toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            Map<String,Object> output = response.getOutput();
+            List<String> values = (List<String>) output.get("text");
+            if(values.size()!=0)
+            result = values.get(0);
             yo = response.getContext();
             return result;
         }
@@ -109,8 +109,8 @@ public class MessageList extends AppCompatActivity {
                 s="I din't get you. Please try again.";
             Message newMessage = new Message("recieved",s,messageList.size(),curTime());
             messageList.add(newMessage);
-            Log.i("messageid", "in onpost mposition" + s + " " + newMessage.messagePosition);
             mMessageAdapter.notifyDataSetChanged();
+        Log.i("messageid", "in onpost mposition" + s + " " + newMessage.messagePosition);
            mMessageRecycler.scrollToPosition(mMessageAdapter.getItemCount()-1);
         }
     }
