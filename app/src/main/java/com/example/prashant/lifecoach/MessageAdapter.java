@@ -28,7 +28,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public int getItemViewType(int position) {
-        if(position%2==0)
+        if(message.get(position).messageId=="sent")
             return R.layout.item_message_sent;
         else
             return R.layout.item_message_received;
