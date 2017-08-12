@@ -87,7 +87,7 @@ public class MessageList extends AppCompatActivity {
                         .context(yo)
                         .build();
 
-            String workspaceId = "3a914f00-6df6-4e7d-8168-3fa07565fcf4";
+            String workspaceId = "7adcc6e4-16f0-4a74-ba22-ae9152803f2a";
             MessageResponse response = service.message(workspaceId, newMessage).execute();
             data = response.toString();
             Log.d("Messageid",data);
@@ -105,6 +105,8 @@ public class MessageList extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            if(s.length()==0)
+                s="I din't get you. Please try again.";
             Message newMessage = new Message("recieved",s,messageList.size(),curTime());
             messageList.add(newMessage);
             Log.i("messageid", "in onpost mposition" + s + " " + newMessage.messagePosition);

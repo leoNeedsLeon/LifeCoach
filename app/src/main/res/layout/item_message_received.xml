@@ -33,7 +33,7 @@
         android:background="@drawable/rounded_rectangle_orange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="240dp"
+        android:maxWidth="200dp"
         android:padding="8dp"
         android:textSize="16sp"
         android:textColor="#ffffff"
