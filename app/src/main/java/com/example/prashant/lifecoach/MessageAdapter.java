@@ -20,23 +20,25 @@ import static com.example.prashant.lifecoach.R.id.view;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     Context context;
     ArrayList<Message> message;
-    int i;
     public MessageAdapter(Context context, ArrayList<Message> message) {
         this.context = context;
         this.message = message;
-        i=0;
         Log.d("messageid", "in constructor");
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position%2==0)
+            return R.layout.item_message_sent;
+        else
+            return R.layout.item_message_received;
     }
 
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        if(i%2==0)
-        view = layoutInflater.inflate(R.layout.item_message_sent,parent,false);
-        else
-            view = layoutInflater.inflate(R.layout.item_message_received,parent,false);
-        i++;
+         view = layoutInflater.inflate(viewType,parent,false);
         MessageViewHolder viewHolder = new MessageViewHolder(view);
         Log.e("messageid", "in onCreateViewHolder posOfMsg" + message.get(message.size()-1).messagePosition + message.get(getItemCount()-1).messageBody);
         return viewHolder;

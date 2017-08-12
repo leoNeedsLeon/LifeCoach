@@ -109,7 +109,7 @@ public class MessageList extends AppCompatActivity {
             messageList.add(newMessage);
             Log.i("messageid", "in onpost mposition" + s + " " + newMessage.messagePosition);
             mMessageAdapter.notifyDataSetChanged();
-            mMessageRecycler.scrollToPosition(mMessageAdapter.getItemCount()-1);
+           mMessageRecycler.scrollToPosition(mMessageAdapter.getItemCount()-1);
         }
     }
 }
