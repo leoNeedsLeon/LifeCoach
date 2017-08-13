@@ -1,5 +1,6 @@
 # LifeCoach
 An IBM Watson based chatbot to converse with people in depression and tension and share their pain. The chatbot also gives advice on how to imrove you condition and get back to your life as soon as possible.
+
 INTRODUCTION
 
 The basic idea is to create a virtual life coach in the form of an Android based chat application using natural language processing. The product will act as a guidance system for people who need psychological assistance as in the case of depression.
