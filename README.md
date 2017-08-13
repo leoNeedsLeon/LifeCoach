@@ -16,7 +16,10 @@ Our product is an unprecedented step towards saving human lives using Artificial
 TOOLS
 
 IBM WATSON
+
 ANDROID STUDIO
+
+
 FUTURE ENDEAVORS
 
 To allow other applications like Whatsapp, Messenger and even web browsers to use our API'S to integrate our services into their products thereby decreasing the rate of suicide exponentially .
